@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: demo
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/FREEPDB1
+    username: testuser
+    password: testpassword
+    driver-class-name: oracle.jdbc.OracleDriver
+  # --- Indicamos a Spring que ejecute los SQL ---
+  sql:
+    init:
+      mode: always                # ejecuta siempre en arranque
+      continue-on-error: true
+      schema-locations: classpath:schema.sql
+      data-locations:   classpath:data.sql
+
+  jpa:
+    hibernate:
+      ddl-auto: none              # usamos nuestro propio schema.sql
+    show-sql: true                # opcional: log de sentencias
+    properties:
+      hibernate.format_sql: true
